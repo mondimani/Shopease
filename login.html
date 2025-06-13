@@ -8,31 +8,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
     body {
       font-family: 'Poppins', sans-serif;
     }
-
     .login-card {
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       animation: fadeIn 0.6s ease-in-out;
     }
-
     .login-btn {
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       transition: all 0.3s ease;
     }
-
     .login-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
-
     .input-field:focus {
       border-color: #4f46e5;
       box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -40,9 +34,7 @@
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 bg-gray-50">
-
   <div class="login-card bg-white rounded-2xl w-full max-w-md overflow-hidden">
-    <!-- Header -->
     <div class="text-center pt-10 pb-6 px-8">
       <div class="flex justify-center">
         <svg class="h-12 w-12 text-indigo-600" viewBox="0 0 24 24" fill="currentColor">
@@ -53,7 +45,6 @@
       <p class="mt-2 text-gray-600">Sign in to your ShopEase account</p>
     </div>
 
-    <!-- Login Form -->
     <div class="px-8 pb-8">
       <form id="login-form">
         <div class="mb-5">
@@ -91,65 +82,27 @@
     </div>
   </div>
 
- <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
-    authDomain: "shopease-1275a.firebaseapp.com",
-    projectId: "shopease-1275a",
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("login-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          alert("✅ Login successful!");
-          window.location.href = "dashboard.html";
-        })
-        .catch((error) => {
-          alert("❌ Login failed: " + error.message);
-        });
-    });
-
-    // Toggle password visibility
-    document.getElementById('toggle-password').addEventListener('click', function () {
-      const input = document.getElementById('password');
-      const icon = this.querySelector('i');
-      if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      } else {
-        input.type = "password";
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      }
-    });
-  });
-</script>
-
-
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
+      authDomain: "shopease-1275a.firebaseapp.com",
+      projectId: "shopease-1275a",
+    };
 
     firebase.initializeApp(firebaseConfig);
 
     document.addEventListener("DOMContentLoaded", function () {
+      // Login handler
       document.getElementById("login-form").addEventListener("submit", function (e) {
         e.preventDefault();
-
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
+          .then(() => {
             alert("✅ Login successful!");
             window.location.href = "dashboard.html";
           })
