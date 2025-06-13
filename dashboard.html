@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEase Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">🎉 Welcome to ShopEase Dashboard</h1>
+    <p class="text-gray-600 mb-6">You are logged in successfully!</p>
+    <button onclick="logout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition">Logout</button>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
+      authDomain: "shopease-1275a.firebaseapp.com",
+      projectId: "shopease-1275a",
+      storageBucket: "shopease-1275a.appspot.com",
+      messagingSenderId: "733891960421",
+      appId: "1:733891960421:web:9db54322ceaf86dc3df08c"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "index.html"; // Redirect if not logged in
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "index.html"; // Back to login
+      });
+    }
+  </script>
+</body>
+</html>
