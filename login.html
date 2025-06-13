@@ -8,9 +8,43 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f7fb;
+        body {</script>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
+    authDomain: "shopease-1275a.firebaseapp.com",
+    projectId: "shopease-1275a",
+    storageBucket: "shopease-1275a.appspot.com",
+    messagingSenderId: "your_sender_id",
+    appId: "your_app_id"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("✅ Login successful!");
+        // Optional redirect:
+        // window.location.href = '/dashboard.html';
+      })
+      .catch((error) => {
+        alert("❌ Login failed: " + error.message);
+      });
+  });
+</script>
+</body>
+</html>
+
         }
         
         .login-card {
