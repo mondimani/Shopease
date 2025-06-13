@@ -97,6 +97,24 @@
     });
   });
 </script>
+  <script>
+  // Smart Tips button click
+  document.getElementById("smartTipsBtn").addEventListener("click", () => {
+    document.getElementById("smartTipsModal").classList.remove("hidden");
+  });
+
+  // Close modal
+  document.getElementById("closeSmartTips").addEventListener("click", () => {
+    document.getElementById("smartTipsModal").classList.add("hidden");
+  });
+
+  // Optional: Close when clicking outside modal
+  window.addEventListener("click", (e) => {
+    const modal = document.getElementById("smartTipsModal");
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+</script>
+
   <!-- Smart Tips Modal -->
 <div id="smartTipsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
   <div class="bg-white w-full max-w-md rounded-xl shadow-xl p-6 relative">
