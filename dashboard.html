@@ -50,6 +50,41 @@
         }
     </style>
 </head>
+    <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
+    authDomain: "shopease-1275a.firebaseapp.com",
+    projectId: "shopease-1275a"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 🔐 Logout handler
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        firebase.auth().signOut().then(() => {
+          alert("✅ Logged out successfully!");
+          window.location.href = "login.html";
+        }).catch((error) => {
+          alert("❌ Logout failed: " + error.message);
+        });
+      });
+    }
+
+    // 🔒 Redirect if not logged in
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+</script>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
