@@ -87,6 +87,16 @@
     });
   });
 </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tipsToggle = document.getElementById("smartTipsToggle");
+    const tipsPanel = document.getElementById("smartTipsPanel");
+
+    tipsToggle.addEventListener("click", () => {
+      tipsPanel.classList.toggle("hidden");
+    });
+  });
+</script>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
@@ -172,6 +182,23 @@
     </header>
 
     <!-- Main Content -->
+  <!-- Add this inside your <main> section, preferably at the bottom -->
+
+<!-- Smart Tips Floating Button -->
+<div id="smartTipsToggle" class="fixed bottom-6 right-6 z-50 cursor-pointer bg-indigo-600 text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center hover:bg-indigo-700">
+  💡
+</div>
+
+<!-- Smart Tips Panel -->
+<div id="smartTipsPanel" class="fixed bottom-20 right-6 z-50 bg-white border border-gray-200 shadow-lg rounded-lg w-72 p-4 hidden">
+  <h3 class="text-lg font-semibold text-indigo-600 mb-2">Smart Tips</h3>
+  <ul class="text-sm text-gray-700 space-y-2">
+    <li>🛒 Explore the Featured Products section for trending deals.</li>
+    <li>📦 Click on any product to view more details or add to cart.</li>
+    <li>👤 Use the profile dropdown (top right) to check orders or logout.</li>
+  </ul>
+</div>
+
     <main>
         <!-- Hero Banner -->
         <section class="hero-gradient py-12 md:py-20">
