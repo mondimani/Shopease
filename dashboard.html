@@ -1,60 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopEase - Your One-Stop Shop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .rating-stars {
-            color: #fbbf24;
-        }
-        
-        .category-card:hover {
-            transform: scale(1.03);
-        }
-        
-        /* Custom scrollbar for product carousel */
-        .scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #c7d2fe;
-            border-radius: 10px;
-        }
-        
-        .scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #4f46e5;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Your One-Stop Shop</title>
+  <meta name="description" content="ShopEase is your one-stop shop for electronics, fashion, and more. Discover top deals and new arrivals.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .rating-stars {
+      color: #fbbf24;
+    }
+
+    .category-card:hover {
+      transform: scale(1.03);
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #c7d2fe;
+      border-radius: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+  </style>
 </head>
-    <!-- Firebase SDK -->
+
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
+    authDomain: "shopease-1275a.firebaseapp.com",
+    projectId: "shopease-1275a"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 🔐 Logout handler
+    const logoutBtn = document.getElementById("logout-link");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        firebase.auth().signOut().then(() => {
+          alert("✅ Logged out successfully!");
+          window.location.href = "login.html";
+        }).catch((error) => {
+          alert("❌ Logout failed: " + error.message);
+        });
+      });
+    }
+
+    // 🔒 Redirect if not logged in
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+  });
+</script>
   const firebaseConfig = {
     apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
     authDomain: "shopease-1275a.firebaseapp.com",
