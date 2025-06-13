@@ -56,19 +56,17 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-
-</script>
+  <script>
   const firebaseConfig = {
-    apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
-    authDomain: "shopease-1275a.firebaseapp.com",
-    projectId: "shopease-1275a"
+    apiKey: "...",
+    authDomain: "...",
+    projectId: "..."
   };
 
   firebase.initializeApp(firebaseConfig);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // 🔐 Logout handler
-    const logoutBtn = document.getElementById("logout-btn");
+    const logoutBtn = document.getElementById("logout-btn") || document.getElementById("logout-link");
     if (logoutBtn) {
       logoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -81,12 +79,12 @@
       });
     }
 
-    // 🔒 Redirect if not logged in
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         window.location.href = "login.html";
       }
     });
+  });
 </script>
 <body class="bg-gray-50">
     <!-- Header -->
