@@ -91,11 +91,10 @@
     </div>
   </div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script>
-    <script>
+ <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script>
   const firebaseConfig = {
     apiKey: "AIzaSyChM3S8p69a0bZIGvbBlTgmYRsFS408MTY",
     authDomain: "shopease-1275a.firebaseapp.com",
@@ -104,19 +103,40 @@
 
   firebase.initializeApp(firebaseConfig);
 
-  function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-        window.location.href = "/dashboard.html";
-      })
-      .catch(error => {
-        document.getElementById("error").innerText = error.message;
-      });
-  }
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("✅ Login successful!");
+          window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+          alert("❌ Login failed: " + error.message);
+        });
+    });
+
+    // Toggle password visibility
+    document.getElementById('toggle-password').addEventListener('click', function () {
+      const input = document.getElementById('password');
+      const icon = this.querySelector('i');
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = "password";
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  });
 </script>
+
 
 
     firebase.initializeApp(firebaseConfig);
