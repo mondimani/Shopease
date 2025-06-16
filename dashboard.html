@@ -747,5 +747,34 @@
     panel.classList.toggle("hidden");
   });
 </script>
+                                  <!-- Smart Tips Script -->
+<script>
+  async function loadSmartTips() {
+    const container = document.getElementById("smartTipsContainer");
+    container.innerHTML = "<p>🕐 Loading smart tips...</p>";
+
+    try {
+      const response = await fetch("/api/smart-tips");
+      const data = await response.json();
+
+      if (data?.tips?.length > 0) {
+        container.innerHTML = `
+          <ul class="list-disc list-inside space-y-2">
+            ${data.tips.map(tip => `<li>${tip}</li>`).join("")}
+          </ul>
+        `;
+      } else {
+        container.innerHTML = "<p>⚠️ No tips available right now.</p>";
+      }
+    } catch (err) {
+      console.error("Error loading tips:", err);
+      container.innerHTML = "<p>⚠️ Failed to load tips. Please try again later.</p>";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadSmartTips);
+</script>
 </body>
-                          </html>
+</html>
+
+                        
