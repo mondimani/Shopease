@@ -20,7 +20,42 @@ body {
   padding: 100px 20px;
   background: radial-gradient(circle at top, #1e293b 0%, #0b0f1a 100%);
 }
+/* Clean up the Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Puts Logo on left, Links on right */
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #0b0f1a;
+  border-bottom: 1px solid #2d3748;
+}
 
+.nav-links {
+  display: flex; /* This makes the list horizontal */
+  list-style: none; /* Removes the bullet points */
+  gap: 2rem; /* Adds space between the links */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none; /* Removes the underline */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #3b82f6; /* Turns blue when you hover over it */
+}
+
+/* Fix the "Get Started" Button in the Nav */
+.btn-primary {
+  background-color: #3b82f6;
+  padding: 8px 20px;
+  border-radius: 6px;
+  color: white !important;
+}
 .highlight {
   color: var(--accent);
 }
