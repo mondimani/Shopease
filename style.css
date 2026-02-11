@@ -7,18 +7,17 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* Hero Section */
+    /* This creates a gradient from deep black at the top to a subtle grey at the bottom */
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+    background-attachment: fixed; /* Keeps the gradient smooth as you scroll */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
 .hero {
-  text-align: center;
-  padding: 100px 20px;
-  background: radial-gradient(circle at top, #1e293b 0%, #0b0f1a 100%);
+    text-align: center;
+    padding: 100px 20px;
+    /* This adds a "glow" effect in the center of the dark background */
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
 }
 /* Clean up the Navbar */
 .navbar {
