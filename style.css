@@ -81,12 +81,13 @@ body {
 }
 
 .feature-card {
-  background: var(--card-bg);
-  border: 1px solid #2d3748;
-  padding: 30px;
-  border-radius: 12px;
-  width: 300px;
-  transition: 0.3s;
+    background: rgba(22, 27, 42, 0.8); /* Added transparency */
+    backdrop-filter: blur(10px); /* This adds a modern glass effect */
+    border: 1px solid #2d3748;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    transition: 0.3s;
 }
 
 .feature-card:hover {
